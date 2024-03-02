@@ -7,12 +7,12 @@
    
    position: absolute;
    top: 2px;
-   
 }
 .decoration_text{
    background: radial-gradient(ellipse farthest-corner at center center, #07FF99 0%, #20FFD7 100%);
    background-clip: text;
    color: transparent;
+   
 }
    h1{
       font-size: 130px;
@@ -33,7 +33,7 @@
     height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    
     background-image: radial-gradient(circle, rgba(89, 131, 252, 1) 0%, rgba(41, 53, 86, 1) 93%);
         
 }
@@ -44,45 +44,45 @@
    display: flex;
    justify-content: center;
    align-items: center;
-  
+   top: 350px;
  }
  img{
     height: 90%;
     width: 90%;
     border-radius:15px;
     box-shadow: 4px -4px 34px -3px rgba(84, 216, 223, 1);;
+    
  }
  .img8{
-    transform: translateX(-325%);
-    z-index: 3;
+    transform: translateX(-175%);
+    
  }
  .img7{
-    transform: translateX(-175%);
-    z-index: 2;
- }
- .img6{  transform: translateX(-25%) ;
-    z-index: 2;
+    transform: translateX(-125%);
   
  }
+ .img6{  transform: translateX(-75%) ;
+   
+ }
  .img5{
-    z-index: 2;
-    transform: translateX(125%);
+  
+    transform: translateX(-25%);
  }
  .img4{
    transform: translateX(25%);
-   z-index: 4;
+  
  }
  .img3{
     transform: translateX(75%);
-    z-index: 5;
+   
  }
  .img2{
     transform: translateX(125%);
-    z-index: 6;
+   
  }
  .img1{
     transform: translateX(175%);
-    z-index: 7;
+   
  }
 .showOpacity{
    opacity: 0.9;
@@ -92,7 +92,7 @@
    height: 190px; 
    background-color:transparent;
    position: absolute;
-   top: 120%;
+   bottom: 110%;
    display: block;
    border: 2px ridge #FFFFFF;
    box-shadow: 1px 4px 16px 0px rgba(0, 0, 0, 0.92);
@@ -102,6 +102,9 @@
  
 .invisible{
 display: none;
+}
+.img_pointer:hover{
+   cursor: pointer;
 }
 
 

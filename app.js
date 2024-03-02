@@ -1,115 +1,138 @@
 
-const IMG1 =document.querySelector('.img1')
-const IMG2 =document.querySelector('.img2')
-const IMG3 =document.querySelector('.img3')
-const IMG4 =document.querySelector('.img4')
-const IMG5 =document.querySelector('.img5')
-const IMG8 =document.querySelector('.img8')
-const IMG7=document.querySelector('.img7')
-const IMG6=document.querySelector('.img6')
-const thumbnails=document.querySelectorAll('img')
-const images = document.querySelectorAll(' img');
-const descriptions = document.querySelectorAll('.description');
+const IMG1 =document.querySelector('.img1');
+const IMG2 =document.querySelector('.img2');
+const IMG3 =document.querySelector('.img3');
+const IMG4 =document.querySelector('.img4');
+const IMG5 =document.querySelector('.img5');
+const IMG6 =document.querySelector('.img6');
+const IMG7=document.querySelector('.img7');
+const IMG8=document.querySelector('.img8');
+const thumbnails=document.querySelectorAll('img');
+const descriptions = document.querySelectorAll( '.description');
 
-let isShifted=false
-IMG1.addEventListener('click',()=>{
-    if(!isShifted){
-        IMG1.style. transform='translateX(175%) scale(2) rotate(360deg)translateY(80%)';
-        IMG1.style.transition='transform 0.9s ease';
-        isShifted=true
-    }else{
-        IMG1.style.transform='translateX(175%)';
-        isShifted=false
-    }
-});
-IMG2.addEventListener('click',()=>{
-    if(!isShifted){
-        IMG2.style. transform='translateX(125%) scale(2) rotate(360deg)translateY(80%)';
-        IMG2.style.transition='transform 0.9s ease';
-        isShifted=true
-    }else{
-        IMG2.style.transform='translateX(125%)';
-        isShifted=false
-    }
-});
-IMG3.addEventListener('click',()=>{
-    if(!isShifted){
-        IMG3.style. transform='translateX(75%) scale(2) rotate(360deg)translateY(80%)';
-        IMG3.style.transition='transform 0.9s ease';
-        isShifted=true
-    }else{
-        IMG3.style.transform='translateX(75%)';
-        isShifted=false
-    }
-});
-IMG4.addEventListener('click',()=>{
-    if(!isShifted){
-        IMG4.style. transform='translateX(25%) scale(2) rotate(360deg)translateY(80%)';
-        IMG4.style.transition='transform 0.9s ease';
-        isShifted=true
-    }else{
-        IMG4.style.transform=' translateX(25%)';
-        isShifted=false
-    }
-});
-IMG5.addEventListener('click',()=>{
-    if(!isShifted){
-        IMG5.style. transform='translateX(125%) scale(2) rotate(360deg)translateY(80%)';
-        IMG5.style.transition='transform 0.9s ease';
-        isShifted=true
-    }else{
-        IMG5.style.transform= 'translateX(125%)';
-        isShifted=false
-    }
-});
-IMG6.addEventListener('click',()=>{
-    if(!isShifted){
-        IMG6.style.transform='translateX(-25%) scale(2) rotate(360deg)translateY(80%)';
-        IMG6.style.transition='transform 0.9s ease';
-        isShifted=true
-    }else{
-        IMG6.style.transform='translateX(-25%)';
-        isShifted=false
-    }
-});
-IMG7.addEventListener('click',()=>{
-    if(!isShifted){
-        IMG7.style.transform='translateX(-175%) scale(2) rotate(360deg)translateY(80%)';
-        IMG7.style.transition='transform 0.9s ease';
-        isShifted=true
-    }else{
-        IMG7.style.transform='translateX(-175%)';
-        isShifted=false;
-        
-    }
-});
-IMG8.addEventListener('click',()=>{
-    if(!isShifted){
-        IMG8.style.transform= 'translateX(-325%) scale(2) rotate(360deg)translateY(80%)';
-        IMG8.style.transition='transform 0.9s ease';
-        isShifted=true
-    }else{
-        IMG8.style.transform='translateX(-325%)';
-        isShifted=false
-    }
-});
+function hideAllDescriptions() {
+    descriptions.forEach(description => {
+        description.classList.add('invisible');
+    });
+};
+let isShifted=false;
 
-thumbnails.forEach((thumbnail, index) => {
+thumbnails.forEach((thumbnail,index) => {
     thumbnail.addEventListener('mouseover', () => {
         thumbnail.classList.add('showOpacity');
-        if (!isShifted) {
-            descriptions[index].classList.remove('invisible');
-        } else {
-            descriptions[index].classList.add('invisible');
-        }
+        descriptions[index].classList.remove('invisible');
     });
 
     thumbnail.addEventListener('mouseout', () => {
         thumbnail.classList.remove('showOpacity');
-        if (!isShifted ) {
-            descriptions[index].classList.add('invisible');
-        } else {
-            descriptions[index].classList.add('invisible');
-        }
+        hideAllDescriptions();
+})
+});
+let isImageExpanded = false; 
+function expandImage(imgElement, index) {
+    if (!isImageExpanded && !isShifted) { 
+        const translateXValue=570+(index*-100)
+        imgElement.style.transform = `translateX(${translateXValue}%) scale(1.4) rotate(360deg) translateY(-100%)`;
+        imgElement.style.transition = 'transform 0.9s ease';
+        isImageExpanded = true;
+        isShifted = true; 
+    };
+};
+
+function restoreImage() {
+    thumbnails.forEach((thumbnail, index) => {
+        thumbnail.style.transform = '';
     });
+    isShifted = false;
+    isImageExpanded = false;
+};
+IMG1.addEventListener('click', () => {
+    if (!isShifted) {
+        expandImage(IMG1, 0);
+        descriptions[0].classList.remove('invisible');
+    } else {
+        
+        isShifted = false;
+        restoreImage();
+        hideAllDescriptions();
+    };
+});
+
+IMG2.addEventListener('click', () => {
+    if (!isShifted) {
+        expandImage(IMG2, 1);
+        descriptions[1].classList.remove('invisible');
+    } else {
+        
+        isShifted = false;
+        restoreImage();
+        hideAllDescriptions();
+    }
+});
+
+IMG3.addEventListener('click', () => {
+    if (!isShifted) {
+        expandImage(IMG3, 2);
+        descriptions[2].classList.remove('invisible');
+    } else {
+        
+        isShifted = false;
+        restoreImage();
+        hideAllDescriptions();
+    }
+});
+IMG4.addEventListener('click', () => {
+    if (!isShifted) {
+        expandImage(IMG4, 3);
+        descriptions[3].classList.remove('invisible');
+    } else {
+        
+        isShifted = false;
+        restoreImage();
+        hideAllDescriptions();
+    }
+});
+IMG5.addEventListener('click', () => {
+    if (!isShifted) {
+        expandImage(IMG5, 4);
+        descriptions[4].classList.remove('invisible');
+    } else {
+        
+        isShifted = false;
+        restoreImage();
+        hideAllDescriptions();
+    }
+});
+IMG6.addEventListener('click', () => {
+    if (!isShifted) {
+        expandImage(IMG6, 5);
+        descriptions[5].classList.remove('invisible');
+    } else {
+        
+        isShifted = false;
+        restoreImage();
+        hideAllDescriptions();
+    }
+});
+IMG7.addEventListener('click', () => {
+    if (!isShifted) {
+        expandImage(IMG7, 6);
+        descriptions[6].classList.remove('invisible');
+    } else {
+        
+        isShifted = false;
+        restoreImage();
+        hideAllDescriptions();
+    }
+});
+IMG8.addEventListener('click', () => {
+    if (!isShifted) {
+        expandImage(IMG8, 7);
+        descriptions[7].classList.remove('invisible');
+    } else {
+        
+        isShifted = false;
+        restoreImage();
+        hideAllDescriptions();
+    }
 });
